@@ -1,89 +1,3 @@
-#Pares e Ímpares (While)
-def pares_e_impares () :
-    repeticoes = 0
-    pares = 0
-    while repeticoes < 5:
-        num = int(input('Diga um número: '))
-        if num%2==0:
-            pares += 1
-        repeticoes += 1
-    impares = 5 - pares
-    print(f'O número de pares foi {pares} e o número de ímpares foi {impares}')
-
-#Testando senha com While
-def teste_de_senha () :
-    senha = input('Digite a senha: ')
-    while senha != '1234':
-        print ('Senha incorreta!')
-        senha = input('Digite a senha: ')
-    print('Senha correta!')
-
-#Bloqueando o acesso com 3 senhas incorretas
-def senha_acesso_bloqueado () :
-    senha = input('Digite a senha: ')
-    tentativas = 1
-    while senha != '1234' and tentativas < 3:
-        print (f'Senha incorreta! Você tem mais {3-tentativas} tentativas!')
-        senha = input('Digite a senha: ')
-        tentativas += 1
-    if senha == '1234':
-        print('Senha correta!')
-    else:
-        print('Acesso Negado!')
-
-#Soma de 10 números pedidos com while
-def soma_10_numeros () :
-    quant_num = 0
-    soma = 0
-    while quant_num < 10:
-        num = int(input('Digite um número: '))
-        quant_num += 1
-        soma += num
-    print(f'A soma de todos os números é {soma}')
-
-#Soma de 10 até 1 com while
-def soma_10_ate_1 () :
-    i = 11
-    soma = 0
-    while i > 0:
-        i -= 1
-        soma += i
-        print(soma)
-
-#Frase com 10 palavras com while
-def frase_10_palavras () :
-    i = 0
-    frase = ''
-    while i < 10:
-        pal = input('Digite uma palavra: ')
-        i += 1
-        frase += ' ' + pal
-        print(frase)
-
-#Quantidade de vogais e consoantes
-def contar_vogais_consoantes () :
-    i = 0
-    vogais = 0
-    consoantes = 0
-    while i < 10:
-        letra = input('Digite uma letra: ')
-        i += 1
-        if letra == 'a' or letra == 'e' or letra == 'i' or letra == 'o' or letra == 'u':
-            vogais += 1
-        else:
-            consoantes += 1
-    print(f"A quantidade de vogais é {vogais} e a quantidade de consoantes é {consoantes}")
-
-#Verificar e transformar um número inteiro
-def tratamento_de_numero () :
-    n = input('Digite um número: ')
-    while not n.isnumeric():
-        print('Isso não é um número!')
-        n = input('Digite um número: ')
-    print('É numero')
-    n = int(n)
-
-#EXERCÍCIO 1
 def exercicio1 () :
     nota = int(input("Digite uma nota entre 0 e 10: "))
     while nota > 10 and nota > 0:
@@ -91,7 +5,7 @@ def exercicio1 () :
         nota = int(input("Digite uma nota entre 0 e 10: "))
     print('Valor correto')
 
-#EXERCÍCIO 2
+
 def exercicio2 () :
     nome = str(input('Digite seu nome: '))
     while len(nome) < 3:
@@ -114,7 +28,7 @@ def exercicio2 () :
         print('Estado Civil Inválido!')
         est_cv = str(input('Digite o seu estado civil (S, C, V ou D)'))
 
-#EXERCÍCIO 3
+
 def exercicio3 () :
     populacao_pais_A = 80000
     populacao_pais_B = 200000
@@ -125,7 +39,7 @@ def exercicio3 () :
         anos += 1
     print(f'Demorou {anos} anos.')
 
-#EXERCÍCIO 4
+
 def exercicio4 () :
     i = 0
     soma = 0
@@ -135,7 +49,7 @@ def exercicio4 () :
         i += 1
     print(f'A soma dos números é {soma} e a média entre eles é {soma/i}')
 
-#EXERCÍCIOS 5
+
 def exercicio5 () :
     n1 = int(input('Digite um número: '))
     n2 = int(input('Digite outro número: '))
@@ -148,7 +62,7 @@ def exercicio5 () :
         i += 1
         print(i)
 
-#EXERCÍCIO 6
+
 def exercicio6 ():
     usuario = input('Digite o seu nome de usuário: ')
     senha = input('Digite a sua senha: ')
@@ -158,7 +72,7 @@ def exercicio6 ():
         senha = input('Digite a sua senha: ')
     print('Cadastro registrado!')
 
-#EXERCÍCIO 7
+
 def exercicio7 () :
     tabuada = int(input('Digite o número da tabuada a ser gerada: '))
     print(f'Tabuada do {tabuada}')
@@ -167,7 +81,7 @@ def exercicio7 () :
         print(f'{tabuada} x {i} = {tabuada*i}')
         i += 1
 
-#PRINTAR TODAS AS TABUADAS
+
 def exercicio7_printar_todas_tabuadas () :
     tabuada = 1
     while tabuada <= 10:
@@ -178,7 +92,7 @@ def exercicio7_printar_todas_tabuadas () :
             i += 1
         tabuada += 1
 
-#EXERCÍCIO 8
+
 def exercicio8 () :
     n = int(input('Digite o termo a terminar a sequência de Fibonacci: '))
     i = 1
@@ -192,7 +106,7 @@ def exercicio8 () :
         n2 = n3
         print(n1 + n2)
 
-#EXERCÍCIO 9
+
 def exercicio9 () :
     repeticoes = 0
     pares = 0
@@ -204,7 +118,7 @@ def exercicio9 () :
     impares = 10 - pares
     print(f'O número de pares foi {pares} e o número de ímpares foi {impares}')
 
-#EXERCÍCIO 10
+
 def exercicio10 () :
     n = int(input('Digite um número para saber seu fatorial: '))
     fatorial = n
@@ -215,7 +129,7 @@ def exercicio10 () :
         fatorial_string += f"*{n}"
     print(f'{fatorial_string} = {fatorial}')
 
-#EXERCÍCIO 11
+
 def exercicio11 () :
     n = int(input('Digite um número: '))
     i = 2
@@ -229,7 +143,7 @@ def exercicio11 () :
             resultado = 'é primo'
     print(f'Esse número {resultado}')
 
-#EXERCÍCIO 11 MELHORADO
+
 def exercicio11_melhorado () :
     n = int(input('Digite um número: '))
     i = 2
@@ -246,7 +160,7 @@ def exercicio11_melhorado () :
     print(f'Esse número {resultado}')
 
 
-#EXERCÍCIO 12
+
 def exercicio12 () :
     quantidade_notas = float(input('Digite a quantidade de notas desejadas para calcular sua média: '))
     while not quantidade_notas.isnumeric():
@@ -265,7 +179,7 @@ def exercicio12 () :
         i += 1
     print(f'A média das suas notas foi: {soma/quantidade_notas:.2f}')
 
-#EXERCÍCIO 13
+
 def exercicio13 () :
     salario_inicial = float(input('Digite o salário inicial: '))
     aumento = 0.015
@@ -277,7 +191,7 @@ def exercicio13 () :
         salario += salario * aumento
         print(f'No ano {ano} o aumento foi de {aumento} e o salário foi {salario:.2f}')
 
-#EXERCÍCIO 14
+
 def exercicio14 () :
     intervalo25 = 0
     intervalo50 = 0
@@ -307,7 +221,6 @@ def exercicio14 () :
         else:
             print('Número grande demais!')
 
-#EXERCÍCIO 15
 def exercicio15 () :
     print('---ELEIÇÕES FODAS---\nSegue abaixo os canditados: '
         '\n1 - José'
@@ -389,31 +302,6 @@ def exercicio15_array ():
            f'{votos_branco} pessoas ({votos_branco / i:.2f}%) votaram em Branco\n'
            f'{votos_nulo} ({votos_nulo / i:.2f}%) pessoas votaram em Nulo')
 
-
-# pares_e_impares ()
-# Acha a quantidade de pares e ímpares conforme os inputs que o usuário deu
-
-# teste_de_senha ()
-# Teste de senha básico
-
-# senha_acesso_bloqueado ()
-# Mesmo código acima, porém, bloqueia o acesso caso ultrapasse 3 tentativas
-
-# soma_10_numeros ()
-# Soma de 10 números que o usuário forneceu
-    
-# soma_10_ate_1 ()
-# Soma dos números 10 até 1, ou seja, 10+9+8...
-    
-# frase_10_palavras ()
-# Somando palavras que pedidos ao usuário usando strings
-
-# contar_vogais_consoantes ()
-# Conta a quantidade de vogais e consoantes que o usuário forneceu
-    
-# tratamento_de_numero ()
-# Entende quando um input é um número ou não, avisando o usuário quando não é um número
-    
 # exercicio1 ()
 # Identificando se uma nota está entre 0 e 10, tratamento de código
 
