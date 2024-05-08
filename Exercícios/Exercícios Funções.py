@@ -59,6 +59,36 @@ def exercicio_7 (lista_num):
             return False
     return True
 
+def exercicio_8 (lista_num):
+    ultimo = len(lista_num) - 1 
+    guardar_valor = 0
+    for i in range (len(lista_num) // 2):
+        guardar_valor = lista_num[i]
+        lista_num[i] = lista_num[ultimo - i]
+        lista_num[ultimo - i] = guardar_valor
+    print(f'A lista invertida é {lista_num}')
+    return lista_num
+
+def exercicio_9 (lista_strings):
+    lista_ordem_alfabetica = []
+    while lista_strings:
+        menor_string = lista_strings[0]
+        menor_index = 0
+        for i in range (len(lista_strings)):
+            if lista_strings[i] < menor_string:
+                menor_string = lista_strings[i]
+                menor_index = i
+        lista_ordem_alfabetica.append(menor_string)
+        lista_strings.pop(menor_index)
+    print(f'A lista em ordem alfabética é: {lista_ordem_alfabetica}')
+    return lista_ordem_alfabetica
+
+def exercicio_10 (lista_num):
+    soma = 0
+    for i in range (len(lista_num)):
+        soma += lista_num[i]
+    print(f'A média aritmética dos elementos na lista é: {soma / len(lista_num)}')
+    return soma / len(lista_num)
 
 # exercicio_1([2, 3, 4, 6])
 # Retorna a soma dos elementos em uma array
@@ -80,3 +110,12 @@ def exercicio_7 (lista_num):
 
 # exercicio_7([1, 2, 3, 4, 5, 10, 7])
 # Retorna True se estiver em ordem crescente e False se não
+
+# exercicio_8([1, 2, 3, 4, 5, 10, 7])
+# Retorna a ordem inversa da array passada
+
+# exercicio_9(['bu', 'ana', 'caio', 'jonas', 'opa'])
+# Retorna a array em ordem alfabética
+
+# exercicio_10([1, 2, 3, 4])
+# Retorna a média aritmética dos números em uma array
