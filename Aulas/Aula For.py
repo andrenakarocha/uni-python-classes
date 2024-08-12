@@ -36,6 +36,31 @@ def inverter_lista ():
         lista[ultimo - i] = aux
     print(lista)
 
+def soma_10_numeros(num_list):
+    sum = 0
+    for number in num_list:
+        sum += number
+    print(sum)
+    return
+
+def tabuada(tabu_range, multi_range):
+    for i in range(tabu_range):
+        print(f'Tabuada do {i + 1}')
+        for j in range(multi_range + 1):
+            print(f'{i + 1} * {j + 1} = {(i + 1) * (j + 1)}')
+    return
+
+def odd_or_even(num_list):
+    evens = 0
+    for num in num_list:
+        if num % 2 == 0:
+            evens += 1
+
+    odds = len(num_list) - evens
+    print(f'Pares: {evens} \nÍmpares: {odds}')
+    return
+
+
 # comidas_favoritas ()
 # Manipulação de 2 arrays para achar a "comida favorita" de cada professor
 
@@ -47,3 +72,12 @@ def inverter_lista ():
 
 # inverter_lista ()
 # Inverte uma array.
+
+# soma_10_numeros([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+# Soma 10 números de uma array
+
+# tabuada(5, 10)
+# Cria tabuadas com os parâmetros passados
+
+# odd_or_even([2, 4, 6, 5, 3, 1])
+# Acha pares e ímpares
