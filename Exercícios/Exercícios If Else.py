@@ -21,6 +21,7 @@ def exercicio3 ():
         print('ACESSO NEGADO')
  
 def exercicio4 ():
+    valortotal = 0
     maca = int(input('Qual a quantidade de maçãs que você irá comprar? '))
     if maca < 6:
         valortotal = maca * 0.30
@@ -83,6 +84,7 @@ def exercicio5_codigo_final ():
     print(f'A ordem crescente é: \n{n1} \n{n2} \n{n3}')
 
 def exercicio6 ():
+    formula = 0
     altura = float(input('Digite sua altura: '))
     genero = int(input('1 - Feminino  | 2 - Masculino \nEscolha seu gênero: '))
     if genero == 1:
@@ -143,6 +145,7 @@ def exercicio11 ():
         print('Triângulo Acutângulo')
 
 def exercicio_extra ():
+    multa = 0
     radar = float(input('Qual era a velocidade do carro?: '))
     if radar <= 100:
         print('Isento de multa')
