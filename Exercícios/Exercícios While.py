@@ -1,6 +1,6 @@
 def exercicio1():
     nota = int(input("Digite uma nota entre 0 e 10: "))
-    while nota > 10 and nota > 0:
+    while 10 < nota < 0:
         print('Valor incorreto!')
         nota = int(input("Digite uma nota entre 0 e 10: "))
     print('Valor correto')
@@ -106,14 +106,16 @@ def exercicio8():
         n2 = n3
         print(n1 + n2)
 
+
 def exercicio8_recursao(a, b):
-    print(a, b, a+b)
+    print(a, b, a + b)
     aux = b
     b = a + b
     a = aux
     if a > 100:
         return
     return exercicio8_recursao(a, b)
+
 
 def exercicio9():
     repeticoes = 0
