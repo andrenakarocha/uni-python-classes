@@ -98,6 +98,20 @@ def exercicio_10(lista_num):
     print(f'A média aritmética dos elementos na lista é: {soma / len(lista_num)}')
     return soma / len(lista_num)
 
+def force_input_inList(list, message, error_message):
+    inpt = input(message)
+    while inpt not in list:
+        print(error_message)
+        print(f'Options:\n{'\n'.join(list)}')
+        inpt = input(message)
+    return inpt
+
+def my_index(list, elem):
+    for i in range(len(list)):
+        if elem == list[i]:
+            return i
+    return
+
 # exercicio_1([2, 3, 4, 6])
 # Retorna a soma dos elementos em uma array
 
@@ -127,3 +141,6 @@ def exercicio_10(lista_num):
 
 # exercicio_10([1, 2, 3, 4])
 # Retorna a média aritmética dos números em uma array
+
+# force_input_inList(['1', '2', '3'], 'Choose: ', 'Not in the list!')
+# Força um input do usuário para algo dentro de uma array
