@@ -33,7 +33,7 @@ def exercicio_4(lista):
     print(f'Os pares dentro da lista {lista} são: {pares}')
 
     # One Liner
-    # pares = [lista[i] for i in range(len(lista)) if lista % 2 == 0]
+    # pares = [lista[i] for i in range(len(lista)) if lista[i] % 2 == 0]
     return pares
 
 
@@ -133,7 +133,7 @@ def my_index(list, elem):
 # exercicio_7([1, 2, 3, 4, 5, 10, 7])
 # Retorna True se estiver em ordem crescente e False se não
 
-# exercicio_8([1, 2, 3, 4, 5, 10, 7])
+exercicio_8([1, 2, 3, 4, 5, 10, 7])
 # Retorna a ordem inversa da array passada
 
 # exercicio_9(['bu', 'ana', 'caio', 'jonas', 'opa'])
@@ -144,3 +144,6 @@ def my_index(list, elem):
 
 # force_input_inList(['1', '2', '3'], 'Choose: ', 'Not in the list!')
 # Força um input do usuário para algo dentro de uma array
+
+# my_index([1, 2, 3], 2)
+# Retorna o index de um elemento na lista
