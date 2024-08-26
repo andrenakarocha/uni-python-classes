@@ -1,4 +1,6 @@
 import matplotlib.pyplot as plt
+
+
 def return_matrix_string(matrix):
     output = ""
     for i in range(len(matrix)):
@@ -35,6 +37,7 @@ def show_chess_board(lines, collums):
     plt.imshow(matrix, 'hot')
     plt.show()
     return
+
 
 # return_matrix_string([[1, 2, 3], [4, 5, 6]])
 # Retorna uma string formatada da matriz
