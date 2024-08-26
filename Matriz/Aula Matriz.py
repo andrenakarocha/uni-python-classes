@@ -10,7 +10,6 @@ def return_matrix_string(matrix):
 
 def generate_matrix(lines, collums):
     matriz = []
-    output = ""
     for i in range(lines):
         matriz.append([])
         for j in range(collums):
@@ -23,6 +22,20 @@ def show_matrix_colors(matrix, color_map):
     plt.colorbar()
     plt.show()
 
+
+def show_chess_board(lines, collums):
+    matrix = []
+    for i in range(lines):
+        matrix.append([])
+        for j in range(collums):
+            if (i + j) % 2 == 0:
+                matrix[i].append(0)
+            else:
+                matrix[i].append(1)
+    plt.imshow(matrix, 'hot')
+    plt.show()
+    return
+
 # return_matrix_string([[1, 2, 3], [4, 5, 6]])
 # Retorna uma string formatada da matriz
 
@@ -31,3 +44,6 @@ def show_matrix_colors(matrix, color_map):
 
 # show_matrix_colors(generate_matrix(20, 20), 'hot')
 # Mostra a matriz de cores usando a lib matplotlib
+
+show_chess_board(8, 8)
+# Mostra uma matriz como um tabuleiro de xadrez
