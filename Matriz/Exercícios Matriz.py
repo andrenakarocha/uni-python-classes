@@ -54,6 +54,20 @@ def transpost_matrix(matrix):
     print_matrix(matrix)
     return
 
+def calculate_grades(grades):
+    weight = [1, 2, 3, 2, 1]
+    medias = [0] * len(grades[0])
+    for i in range(len(grades[0])):
+        for j in range(len(grades)):
+            grades[j][i] *= weight[j]
+            medias[i] += grades[j][i]
+        weight_sum = 0
+        for w in weight:
+            weight_sum += w
+        medias[i] /= weight_sum
+
+    print(medias)
+    return medias
 
 def show_chess_board(lines, collums):
     matrix = []
@@ -85,6 +99,14 @@ def show_chess_board(lines, collums):
 
 # transpost_matrix([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
 # Exercício 6
+
+calculate_grades([
+    [10, 3, 10],
+    [9, 7, 3],
+    [5, 9, 6],
+    [2, 1, 4],
+    [8, 10, 9]
+])
 
 # show_chess_board(8, 8)
 # Exercício 8
