@@ -85,6 +85,13 @@ def show_chess_board(lines, collums):
 
 
 def matrix_to_circle(matrix):
+    for i in range(len(matrix)):
+        for j in range(len(matrix[i])):
+            if (((i - len(matrix) / 2) ** 2) + ((j - len(matrix) / 2) ** 2)<= (len(matrix) / 2) ** 2):
+                matrix[i][j] = 1
+    plt.imshow(matrix, 'hot')
+    plt.show()
+    return
 
 
 # print_matrix(generate_matrix(5, 5))
@@ -110,3 +117,6 @@ def matrix_to_circle(matrix):
 
 # show_chess_board(8, 8)
 # Exercício 8
+
+# matrix_to_circle(generate_matrix(1000, 1000))
+# Exercício 9
