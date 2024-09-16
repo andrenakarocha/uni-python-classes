@@ -97,9 +97,10 @@ def ask_pizza():
 def checkout():
     print('Cart: ')
     for pizza in cart['Pizzas'].keys():
-        print(f'Pizza - {pizza} / Quantity - {cart['Pizzas'][pizza]}')
+        print(f'Pizza - {pizza} / Quantity - {cart["Pizzas"][pizza]}')
 
-    print(f'The total was {cart["Total Price"]}')        
+    print(f'The total was ${cart["Total Price"]}')        
+
 
 def register():
     for option in cart['Address'].keys():
