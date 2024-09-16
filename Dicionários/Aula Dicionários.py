@@ -81,15 +81,6 @@ def text_to_emoji():
     print(output)
     return output
 
-def pizzaria():
-    pizzas = {
-        'pizzas': ['calabresa', '4 queijos', 'strogooff', 'peperoni', 'frango com catupiry'],
-        'recheios': ['caupiry', 'cheddar', 'cream cheese', 'doce de leite', 'chocolate'],
-        'preco': [40, 70, 60, 50, 30],
-        'estoque': [4, 15, 21, 4, 5],
-    }
-
-
 
 # dic_even_and_odds([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
 # Cria dicionário com pares e ímpares de números na lista
