@@ -99,9 +99,12 @@ def checkout():
     for pizza in cart['Pizzas'].keys():
         print(f'Pizza - {pizza} / Quantity - {cart['Pizzas'][pizza]}')
 
-for option in cart['Address'].keys():
-    inpt = input(f'Please, type your {option}: ')
-    cart['Address'][option] = inpt
+    print(f'The total was {cart["Total Price"]}')        
+
+def register():
+    for option in cart['Address'].keys():
+        inpt = input(f'Please, type your {option}: ')
+        cart['Address'][option] = inpt
 
 
 
