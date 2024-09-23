@@ -77,17 +77,17 @@ def cadastrar_endereço():
         CEP = input('Digite seu CEP: ')
         url = f'https://viacep.com.br/ws/{CEP}/json/'
         response = requests.get(url)
-        if response.status_code() == 200:    
+        if response.status_code == 200:    
             response = response.json()
             print(response)
-            confirmar = forca_opcao('Essas são as suas informações', ['Sim', 'Não'], 'Resposta inválida! (Sim/Não)')
+            confirmar = forca_opcao('\nEssas são as suas informações? ', ['Sim', 'Não'], '\nResposta inválida! (Sim/Não)')
             if confirmar == 'Sim':
                 carrinho['Informações'] = response
             else:
-                print('Digitado incorretamente!')   
+                print('\nDigitado incorretamente!')   
                 continue
         else:
-            print('CEP incorreto!')
+            print('\nCEP incorreto!')
 
 def comprar():
     while True:
