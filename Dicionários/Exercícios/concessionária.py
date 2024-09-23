@@ -1,3 +1,5 @@
+import requests
+
 carros = {
     'Honda Civic': {
         'potência': '155 cv',
@@ -70,6 +72,23 @@ def listar_carros():
     for elem in carros.keys():
             print(f"{elem} - Estoque: {carros[elem]['estoque']} - Valor: {carros[elem]['preço (R$)']}")
 
+def cadastrar_endereço():
+    while True:
+        CEP = input('Digite seu CEP: ')
+        url = f'https://viacep.com.br/ws/{CEP}/json/'
+        response = requests.get(url)
+        if response.status_code() == 200:    
+            response = response.json()
+            print(response)
+            confirmar = forca_opcao('Essas são as suas informações', ['Sim', 'Não'], 'Resposta inválida! (Sim/Não)')
+            if confirmar == 'Sim':
+                carrinho['Informações'] = response
+            else:
+                print('Digitado incorretamente!')   
+                continue
+        else:
+            print('CEP incorreto!')
+
 def comprar():
     while True:
             listar_carros()
@@ -97,9 +116,7 @@ def comprar():
             if continuar == 'Sim':
                 continue
             else:
-                for atual in carrinho['Informações'].keys():
-                    inpt = input(f'\nDiga o(a) seu(a) {atual}: ')
-                    carrinho['Informações'][f'{atual}'] = inpt
+                cadastrar_endereço()
 
                 print(f'------------- \nSeu carrinho:')
                 for carro in carrinho['Carros'].keys():
@@ -119,6 +136,8 @@ def adicionar_carro_admin():
     carros[nome] = {}
     for info in carros['Chevrolet Onix'].keys():
         inpt = input(f'\nDigite o(a) {info} do carro: ')
+        if inpt.isnumeric():
+            carros[nome][info] = int(inpt)
         carros[nome][info] = inpt
     print('\nCarro adicionado!') 
 
@@ -142,6 +161,8 @@ def atualizar_carro_admin():
 
     for info in infos_escolhidas:
         inpt = input(f'\nQual será o(a) novo(a) {info}: ')
+        if inpt.isnumeric():
+            carros[carro][info] = int(inpt)
         carros[carro][info] = inpt
     
     print('\nCarro atualizado!')
