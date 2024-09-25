@@ -1,202 +1,219 @@
 import requests
 
-carros = {
+cars = {
     'Honda Civic': {
-        'potência': '155 cv',
-        'consumo (km/l)': 11.5,
-        'cor': 'Prata',
-        'ano': 2022,
-        'estoque': 5,
-        'preço (R$)': 125000 
+        'power': '155 hp',
+        'fuel_efficiency (km/l)': 11.5,
+        'color': 'Silver',
+        'year': 2022,
+        'stock': 5,
+        'price (R$)': 125000
     },
     'Toyota Corolla': {
-        'potência': '177 cv',
-        'consumo (km/l)': 12.0, 
-        'cor': 'Preto',
-        'ano': 2023,
-        'estoque': 3,
-        'preço (R$)': 145000 
+        'power': '177 hp',
+        'fuel_efficiency (km/l)': 12.0,
+        'color': 'Black',
+        'year': 2023,
+        'stock': 3,
+        'price (R$)': 145000
     },
     'Ford EcoSport': {
-        'potência': '137 cv',
-        'consumo (km/l)': 9.5,
-        'cor': 'Branco',
-        'ano': 2021,
-        'estoque': 4,
-        'preço (R$)': 99000
+        'power': '137 hp',
+        'fuel_efficiency (km/l)': 9.5,
+        'color': 'White',
+        'year': 2021,
+        'stock': 4,
+        'price (R$)': 99000
     },
     'Chevrolet Onix': {
-        'potência': '116 cv',
-        'consumo (km/l)': 14.0,
-        'cor': 'Vermelho',
-        'ano': 2022,
-        'estoque': 7,
-        'preço (R$)': 75000 
+        'power': '116 hp',
+        'fuel_efficiency (km/l)': 14.0,
+        'color': 'Red',
+        'year': 2022,
+        'stock': 7,
+        'price (R$)': 75000
     },
     'Volkswagen Golf': {
-        'potência': '150 cv',
-        'consumo (km/l)': 10.5, 
-        'cor': 'Azul',
-        'ano': 2023,
-        'estoque': 2,
-        'preço (R$)': 135000
+        'power': '150 hp',
+        'fuel_efficiency (km/l)': 10.5,
+        'color': 'Blue',
+        'year': 2023,
+        'stock': 2,
+        'price (R$)': 135000
     }
 }
 
-carrinho = {
-    'Carros': {},
-    'Valor total': 0,
-    'Informações': {
-            'Rua': '',
-            'Numero': '',
-            'CEP': '',
-            'Complemento': ''
+cart = {
+    'Cars': {},
+    'Total value': 0,
+    'Information': {
+        'Street': '',
+        'Number': '',
+        'ZIP': '',
+        'Complement': ''
     }
 }
 
-usuarios = ['Cliente', 'Funcionário']
+yes_or_no = ['Yes', 'No']
 
-def forca_opcao (msg, lista, msg_erro):
+users = ['Customer', 'Employee']
+
+
+def force_option(msg, list, error_msg):
     resp = input(msg)
-    while resp not in lista:
-        resp = input(msg_erro)
+    while resp not in list:
+        resp = input(error_msg)
     return resp
 
-def verificar_numero(msg, msg_erro):
+
+def verify_number(msg, error_msg):
     resp = input(msg)
     while not resp.isnumeric():
-        resp = input(msg_erro)        
+        resp = input(error_msg)
     return int(resp)
 
-def listar_carros():
-    for elem in carros.keys():
-            print(f"{elem} - Estoque: {carros[elem]['estoque']} - Valor: {carros[elem]['preço (R$)']}")
 
-def cadastrar_endereço():
+def list_cars():
+    for elem in cars.keys():
+        print(f"{elem} - Stock: {cars[elem]['stock']} - Value: {cars[elem]['price (R$)']}")
+
+
+def register_address():
     while True:
-        CEP = input('Digite seu CEP: ')
-        url = f'https://viacep.com.br/ws/{CEP}/json/'
+        zip_code = input('Enter your ZIP code: ')
+        url = f'https://viacep.com.br/ws/{zip_code}/json/'
         response = requests.get(url)
-        if response.status_code == 200:    
+        if response.status_code == 200:
             response = response.json()
             print(response)
-            confirmar = forca_opcao('\nEssas são as suas informações? ', ['Sim', 'Não'], '\nResposta inválida! (Sim/Não)')
-            if confirmar == 'Sim':
-                carrinho['Informações'] = response
+            confirm = force_option('\nIs this your information? ', yes_or_no, '\nInvalid response! (Yes/No)')
+            if confirm == 'Yes':
+                cart['Information'] = response
             else:
-                print('\nDigitado incorretamente!')   
+                print('\nIncorrectly entered!')
                 continue
         else:
-            print('\nCEP incorreto!')
+            print('\nIncorrect ZIP code!')
 
-def comprar():
+
+def buy():
     while True:
-            listar_carros()
-            escolha = forca_opcao('\nQual o carro que deseja? ', carros.keys(), '\nEsse carro não está no catálogo! ')
-            if carros[escolha]['estoque'] == 0:
-                print(f'\nNão temos mais {escolha} no nosso estoque! Por favor, escolha outro carro! ')
-                continue
+        list_cars()
+        choice = force_option('\nWhich car do you want? ', cars.keys(), '\nThis car is not in the catalog! ')
+        if cars[choice]['stock'] == 0:
+            print(f'\nWe no longer have {choice} in our stock! Please choose another car! ')
+            continue
 
-            qtd = verificar_numero(f'\nQuantas unidades de {escolha} você deseja? ', '\nResposta Inválida, insira um número! ')
-            while qtd > carros[escolha]['estoque']:
-                print(f'\nNão há essa quantidade no nosso estoque! ')
-                qtd = verificar_numero(f'\nQuantas unidades de {escolha} você deseja? ', '\nResposta Inválida, insira um número! ')
+        qty = verify_number(f'\nHow many units of {choice} do you want? ', '\nInvalid response, enter a number! ')
+        while qty > cars[choice]['stock']:
+            print(f'\nWe don\'t have that quantity in our stock! ')
+            qty = verify_number(f'\nHow many units of {choice} do you want? ', '\nInvalid response, enter a number! ')
 
-            if escolha in carrinho['Carros'].keys():
-                carrinho['Carros'][escolha] += qtd
-            else:
-                carrinho['Carros'][escolha] = qtd
+        if choice in cart['Cars'].keys():
+            cart['Cars'][choice] += qty
+        else:
+            cart['Cars'][choice] = qty
 
-            carros[escolha]['estoque'] -= qtd
-            carrinho['Valor total'] += carros[escolha]['preço (R$)'] * qtd
+        cars[choice]['stock'] -= qty
+        cart['Total value'] += cars[choice]['price (R$)'] * qty
 
-            print('\nAdicionado ao carrinho!')
-            continuar = forca_opcao('\nDeseja continuar comprando? ', ['Sim', 'Não'], '\nResposta inválida! (Sim/Não)')    
+        print('\nAdded to cart!')
+        continue_shopping = force_option('\nDo you want to continue shopping? ', yes_or_no,
+                                         '\nInvalid response! (Yes/No)')
 
-            if continuar == 'Sim':
-                continue
-            else:
-                cadastrar_endereço()
+        if continue_shopping == 'Yes':
+            continue
+        else:
+            register_address()
 
-                print(f'------------- \nSeu carrinho:')
-                for carro in carrinho['Carros'].keys():
-                    print(f'{carro} - Quantidade : {carrinho["Carros"][carro]}\n')
-                print(f'\nValor total: {carrinho["Valor total"]}')
-                print(f'\nA entrega será feita no endereço abaixo: \nRua: {carrinho["Informações"]["Rua"]}\nNúmero: {carrinho["Informações"]["Numero"]}\nCEP: {carrinho["Informações"]["CEP"]}')
-                break
+            print(f'------------- \nYour cart:')
+            for car in cart['Cars'].keys():
+                print(f'{car} - Quantity : {cart["Cars"][car]}\n')
+            print(f'\nTotal value: {cart["Total value"]}')
+            print(
+                f'\nThe delivery will be made to the address below: \nStreet: {cart["Information"]["Street"]}\nNumber: {cart["Information"]["Number"]}\nZIP: {cart["Information"]["ZIP"]}')
+            break
 
-def remover_carro_admin():
-    listar_carros()
-    carro = forca_opcao('\nQual o carro que deseja remover? ', carros.keys(), '\nEsse carro não existe!, digite um carro válido: ')
-    carros.pop(carro, None)
-    print('\nCarro removido!')
 
-def adicionar_carro_admin():
-    nome = input('\nDigite o nome do carro: ')
-    carros[nome] = {}
-    for info in carros['Chevrolet Onix'].keys():
-        inpt = input(f'\nDigite o(a) {info} do carro: ')
+def remove_car_admin():
+    list_cars()
+    car = force_option('\nWhich car do you want to remove? ', cars.keys(),
+                       '\nThis car doesn\'t exist!, enter a valid car: ')
+    cars.pop(car, None)
+    print('\nCar removed!')
+
+
+def add_car_admin():
+    name = input('\nEnter the car name: ')
+    cars[name] = {}
+    for info in cars['Chevrolet Onix'].keys():
+        inpt = input(f'\nEnter the {info} of the car: ')
         if inpt.isnumeric():
-            carros[nome][info] = int(inpt)
-        carros[nome][info] = inpt
-    print('\nCarro adicionado!') 
+            cars[name][info] = int(inpt)
+        cars[name][info] = inpt
+    print('\nCar added!')
 
-def atualizar_carro_admin():
-    listar_carros()
-    carro = forca_opcao('\nQual carro você deseja atualizar? ', carros.keys(), '\nEsse carro não está no catálogo!')
-    
-    print('\nInformações atuais do carro: ')
-    for info in carros[carro].keys():
-        print(f'\n{info} = {carros[carro][info]}')
 
-    infos_escolhidas = []
+def update_car_admin():
+    list_cars()
+    car = force_option('\nWhich car do you want to update? ', cars.keys(), '\nThis car is not in the catalog!')
+
+    print('\nCurrent car information: ')
+    for info in cars[car].keys():
+        print(f'\n{info} = {cars[car][info]}')
+
+    chosen_infos = []
     while True:
-        info_escolhida = forca_opcao('\nQual informação você deseja alterar? ', carros[carro].keys(), '\nEssa não é uma informação válida! Digite novamente: ')
-        infos_escolhidas.append(info_escolhida)
-        continuar = forca_opcao('\nDeseja alterar mais alguma informação? ', ['Sim', 'Não'], '\nResposta Inválida! (Sim/Não)')
-        if continuar == 'Sim':
+        chosen_info = force_option('\nWhich information do you want to change? ', cars[car].keys(),
+                                   '\nThis is not valid information! Enter again: ')
+        chosen_infos.append(chosen_info)
+        continue_update = force_option('\nDo you want to change any more information? ', yes_or_no,
+                                       '\nInvalid Response! (Yes/No)')
+        if continue_update == 'Yes':
             continue
         else:
             break
 
-    for info in infos_escolhidas:
-        inpt = input(f'\nQual será o(a) novo(a) {info}: ')
+    for info in chosen_infos:
+        inpt = input(f'\nWhat will be the new {info}: ')
         if inpt.isnumeric():
-            carros[carro][info] = int(inpt)
-        carros[carro][info] = inpt
-    
-    print('\nCarro atualizado!')
-    
+            cars[car][info] = int(inpt)
+        cars[car][info] = inpt
+
+    print('\nCar updated!')
+
 
 def admin():
     while True:
         print('''
 Admin Menu:
-    1 - Remover Carro
-    2 - Adicionar Carro
-    3 - Atualizar Carro
+    1 - Remove Car
+    2 - Add Car
+    3 - Update Car
 ''')
 
-        escolha = forca_opcao('\nQual a opção que deseja? ', ['1', '2', '3'], '\nNão está na lista, digite o número correto')
-    
-        match escolha:
+        choice = force_option('\nWhich option do you want? ', ['1', '2', '3'],
+                              '\nNot in the list, enter the correct number')
+
+        match choice:
             case "1":
-                remover_carro_admin()
+                remove_car_admin()
                 continue
             case "2":
-                adicionar_carro_admin()
+                add_car_admin()
                 continue
             case "3":
-                atualizar_carro_admin()
+                update_car_admin()
                 continue
-                
-def main():    
-    usuario = forca_opcao('O que você é? (Cliente / Funcionário): ', usuarios, 'Resposta inválida! Escolha um usuário: ')
-    if usuario == 'Cliente':
-        comprar()
+
+
+def main():
+    user = force_option('What are you? (Customer / Employee): ', users, 'Invalid response! Choose a user: ')
+    if user == 'Customer':
+        buy()
     else:
         admin()
 
+
 if __name__ == '__main__':
     main()
-    
