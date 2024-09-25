@@ -54,23 +54,22 @@ cart = {
     }
 }
 
-yes_or_no = ['Yes', 'No']
-
-users = ['Customer', 'Employee']
+YES_OR_NO = ['Yes', 'No']
+USERS = ['Customer', 'Employee']
 
 
 def force_option(msg, list, error_msg):
-    resp = input(msg)
-    while resp not in list:
-        resp = input(error_msg)
-    return resp
+    user_input = input(msg)
+    while user_input not in list:
+        user_input = input(error_msg)
+    return user_input
 
 
 def verify_number(msg, error_msg):
-    resp = input(msg)
-    while not resp.isnumeric():
-        resp = input(error_msg)
-    return int(resp)
+    user_input = input(msg)
+    while not user_input.isnumeric():
+        user_input = input(error_msg)
+    return int(user_input)
 
 
 def list_cars():
@@ -86,7 +85,7 @@ def register_address():
         if response.status_code == 200:
             response = response.json()
             print(response)
-            confirm = force_option('\nIs this your information? ', yes_or_no, '\nInvalid response! (Yes/No)')
+            confirm = force_option('\nIs this your information? ', YES_OR_NO, '\nInvalid response! (Yes/No)')
             if confirm == 'Yes':
                 cart['Information'] = response
             else:
@@ -118,8 +117,7 @@ def buy():
         cart['Total value'] += cars[choice]['price (R$)'] * qty
 
         print('\nAdded to cart!')
-        continue_shopping = force_option('\nDo you want to continue shopping? ', yes_or_no,
-                                         '\nInvalid response! (Yes/No)')
+        continue_shopping = force_option('\nDo you want to continue shopping? ', YES_OR_NO,'\nInvalid response! (Yes/No)')
 
         if continue_shopping == 'Yes':
             continue
@@ -137,8 +135,7 @@ def buy():
 
 def remove_car_admin():
     list_cars()
-    car = force_option('\nWhich car do you want to remove? ', cars.keys(),
-                       '\nThis car doesn\'t exist!, enter a valid car: ')
+    car = force_option('\nWhich car do you want to remove? ', cars.keys(),'\nThis car doesn\'t exist!, enter a valid car: ')
     cars.pop(car, None)
     print('\nCar removed!')
 
@@ -167,8 +164,7 @@ def update_car_admin():
         chosen_info = force_option('\nWhich information do you want to change? ', cars[car].keys(),
                                    '\nThis is not valid information! Enter again: ')
         chosen_infos.append(chosen_info)
-        continue_update = force_option('\nDo you want to change any more information? ', yes_or_no,
-                                       '\nInvalid Response! (Yes/No)')
+        continue_update = force_option('\nDo you want to change any more information? ', YES_OR_NO,'\nInvalid Response! (Yes/No)')
         if continue_update == 'Yes':
             continue
         else:
@@ -192,8 +188,7 @@ Admin Menu:
     3 - Update Car
 ''')
 
-        choice = force_option('\nWhich option do you want? ', ['1', '2', '3'],
-                              '\nNot in the list, enter the correct number')
+        choice = force_option('\nWhich option do you want? ', ['1', '2', '3'], '\nNot in the list, enter the correct number')
 
         match choice:
             case "1":
@@ -208,7 +203,7 @@ Admin Menu:
 
 
 def main():
-    user = force_option('What are you? (Customer / Employee): ', users, 'Invalid response! Choose a user: ')
+    user = force_option('What are you? (Customer / Employee): ', USERS, 'Invalid response! Choose a user: ')
     if user == 'Customer':
         buy()
     else:
