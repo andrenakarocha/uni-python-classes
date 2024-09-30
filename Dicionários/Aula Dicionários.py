@@ -82,6 +82,21 @@ def text_to_emoji():
     return output
 
 
+def remove_accent(text):
+    accents = {
+        'á ã à â' : 'a',
+        'ó ô õ' : 'o',
+        'é ê' : 'e',
+        'í î' : 'i',
+        'ú ü' : 'u'
+    }
+    for key in accents.keys():
+        for char in key:
+            texto = texto.replace(char, accents[key])
+    print(text)
+
+    return
+
 # dic_even_and_odds([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
 # Cria dicionário com pares e ímpares de números na lista
 
