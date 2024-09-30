@@ -56,6 +56,7 @@ cart = {
 
 YES_OR_NO = ['Yes', 'No']
 USERS = ['Customer', 'Employee']
+TYPES_DICT = {key : type(cars['Honda Civic'][key]) for key in cars['Honda Civic'].keys()}
 
 
 def force_option(msg, list, error_msg):
@@ -144,10 +145,25 @@ def add_car_admin():
     name = input('\nEnter the car name: ')
     cars[name] = {}
     for info in cars['Chevrolet Onix'].keys():
-        inpt = input(f'\nEnter the {info} of the car: ')
-        if inpt.isnumeric():
-            cars[name][info] = int(inpt)
-        cars[name][info] = inpt
+        if TYPES_DICT[info] is float:
+            while True:
+                try:
+                    inpt = float(input(f'Type the change for {info}: '))
+                    cars[name][info] = inpt
+                    break
+                except ValueError:
+                    print('Value must be float number!')
+        elif TYPES_DICT[info] is int:
+            while True:
+                try:
+                    inpt = float(input(f'Type the change for {info}: '))
+                    cars[name][info] = inpt
+                    break
+                except ValueError:
+                    print('Value must be integer number!')
+        else:
+            inpt = input(f'Type the change for {info}: ')
+            cars[name][info] = inpt
     print('\nCar added!')
 
 
@@ -171,10 +187,25 @@ def update_car_admin():
             break
 
     for info in chosen_infos:
-        inpt = input(f'\nWhat will be the new {info}: ')
-        if inpt.isnumeric():
-            cars[car][info] = int(inpt)
-        cars[car][info] = inpt
+        if TYPES_DICT[info] is float:
+            while True:
+                try:
+                    inpt = float(input(f'Type the change for {info}: '))
+                    cars[car][info] = inpt
+                    break
+                except ValueError:
+                    print('Value must be float number!')
+        elif TYPES_DICT[info] is int:
+            while True:
+                try:
+                    inpt = float(input(f'Type the change for {info}: '))
+                    cars[car][info] = inpt
+                    break
+                except ValueError:
+                    print('Value must be integer number!')
+        else:
+            inpt = input(f'Type the change for {info}: ')
+            cars[car][info] = inpt
 
     print('\nCar updated!')
 
