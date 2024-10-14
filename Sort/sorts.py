@@ -1,3 +1,5 @@
+import math
+
 def find_min (list):
     index_min = 0
     min = list[index_min]
@@ -22,7 +24,7 @@ def bad_selection_sort(list):
         aux = list[i]
         list[i] = list[index_min]
         list[index_min] = aux
-    return
+    return list
 
 
 def bubble_sort(list):
@@ -36,6 +38,19 @@ def bubble_sort(list):
                 num_of_changes += 1
         if num_of_changes == 0:
             break
-    return
+    return list
+
+
+def find_sqrt(number):
+    init = 0
+    end = number
+    while True:
+        attempt = (init + end) / 2
+        if attempt ** 2 > number:
+            end = attempt
+        else:
+            init = attempt
+        if end - init < 0.001:
+            return attempt
 
 
