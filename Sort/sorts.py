@@ -41,7 +41,7 @@ def bubble_sort(list):
     return list
 
 
-def find_sqrt(number):
+def binary_sqrt_iterative(number):
     init = 0
     end = number
     while True:
@@ -52,5 +52,16 @@ def find_sqrt(number):
             init = attempt
         if end - init < 0.001:
             return attempt
+
+
+def binary_sqrt_recursive(num, init, end):
+    attempt = (init + end) / 2
+    if attempt ** 2 > num:
+        end = attempt
+    else:
+        init = attempt
+    if end - init > 0.001:
+        binary_sqrt_recursive(num, init, end)
+    return attempt
 
 
