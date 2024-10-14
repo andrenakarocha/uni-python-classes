@@ -65,3 +65,22 @@ def binary_sqrt_recursive(num, init, end):
     return attempt
 
 
+def quick_sort(list):
+    if len(list) <= 1:
+        return list
+
+    pivot = list[0]
+    higher_numbers_list = [num for num in list if num > pivot]
+    lower_numbers_list = [num for num in list if num < pivot]
+
+    lower_numbers_sorted = quick_sort(lower_numbers_list)
+    higher_numbers_sorted = quick_sort(higher_numbers_list)
+
+    return lower_numbers_sorted + [pivot] + higher_numbers_sorted
+
+
+print(quick_sort([4, 7, 1, 3, 6, 5, 2]))
+
+
+list = [3, 2, 1]
+list.sort()
