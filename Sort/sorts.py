@@ -80,7 +80,7 @@ def quick_sort(list):
 
 def binary_search(list, number):
     if len(list) <= 1:
-        print("NAO TA NA LISTA DAHHNNNN rOblOx eDgE")
+        print("Not in list")
         return
 
     init = 0
