@@ -61,7 +61,7 @@ def binary_sqrt_recursive(num, init, end):
     else:
         init = attempt
     if end - init > 0.001:
-        binary_sqrt_recursive(num, init, end)
+        attempt = binary_sqrt_recursive(num, init, end)
     return attempt
 
 
@@ -78,9 +78,19 @@ def quick_sort(list):
 
     return lower_numbers_sorted + [pivot] + higher_numbers_sorted
 
+def binary_search(list, number):
+    if len(list) <= 1:
+        print("NAO TA NA LISTA DAHHNNNN rOblOx eDgE")
+        return
 
-print(quick_sort([4, 7, 1, 3, 6, 5, 2]))
+    init = 0
+    end = len(list) - 1
+    attempt = (init + end) // 2
 
+    if list[attempt] == number:
+        return attempt
+    if list[attempt] < number:
+        return binary_search(list[attempt + 1:], number)
+    else:
+        return binary_search(list[:attempt - 1], number)
 
-list = [3, 2, 1]
-list.sort()
