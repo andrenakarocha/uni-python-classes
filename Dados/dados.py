@@ -57,13 +57,4 @@ dict_pesos = {
     'NU_NOTA_LC': 2
 }
 
-geral = compareceram[dict_pesos.keys()]
-geral = geral[compareceram[dict_pesos.keys() != '']]
-geral = geral.dropna()
-pesos = [1, 3, 1, 3, 2]
-geral = geral.to_numpy()
-geral = geral.astype(np.float64)
-media_geral = np.dot(geral, pesos) / np.sum(pesos)
-print(media_geral)
-
 
